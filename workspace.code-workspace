@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"plantuml.render": "PlantUMLServer",
+		"plantuml.server": "http://localhost:8080",
+		"plantuml.exportFormat": "png",
+		"plantuml.exportOutDir": "./images/",
+	}
+}
