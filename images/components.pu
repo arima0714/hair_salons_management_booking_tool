@@ -1,0 +1,8 @@
+@startuml sample
+
+start
+:Hello world;
+:Welcome to PlantUML;
+stop
+
+@enduml
