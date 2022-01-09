@@ -25,3 +25,9 @@ vscodeのplantuml拡張機能を利用。workspaceを読み込むと設定され
 dockerが必要でサーバーの起動は下記の通り。
 
 `docker run -d -p 8080:8080 plantuml/plantuml-server:jetty`
+
+# FireBase Emulator
+
+## 起動
+
+`npx firebase emulators:start`
