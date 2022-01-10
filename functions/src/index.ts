@@ -4,9 +4,32 @@ admin.initializeApp();
 
 const db = admin.firestore()
 
+// type bookingInfo = {
+//     date: string;
+//     name: string;
+//     term1: boolean;
+//     term2: boolean;
+//     term3: boolean;
+//     term4: boolean;
+//     term5: boolean;
+// }
+
+
 export const createDocument = functions.https.onRequest(async (req, res) => {
-    await db.collection("test").doc("abc").set({a: 123});
-    res.send();
+    interface bookingInfo {
+        date: string;
+        name: string;
+        term1: boolean;
+        term2: boolean;
+        term3: boolean;
+        term4: boolean;
+        term5: boolean;
+        description: string
+    }
+    let bookingInformation: bookingInfo = JSON.parse(JSON.stringify(req.query));
+
+    await db.collection("test").doc("abc").set(bookingInformation);
+    res.status(200).json(bookingInformation).send();
 });
 
 export const updateDocument = functions.https.onRequest(async (req, res) => {
