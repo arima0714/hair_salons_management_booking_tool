@@ -4,39 +4,22 @@ admin.initializeApp();
 
 const db = admin.firestore()
 
+interface bookingData {
+    date: string,
+    name: string,
+}
+
 // CREATE
 // 予約情報の作成
 export const createDocument = functions.https.onRequest(async (req, res) => {
-    interface bookingInfo {
-        date: string;
-        name: string;
-        term1: boolean;
-        term2: boolean;
-        term3: boolean;
-        term4: boolean;
-        term5: boolean;
-        description: string
-    }
-    interface termsInfo {
-        term1: boolean;
-        term2: boolean;
-        term3: boolean;
-        term4: boolean;
-        term5: boolean;
-    }
-    let bookingInformation: bookingInfo = JSON.parse(JSON.stringify(req.query));
+    const bookingInformation: bookingData = JSON.parse(JSON.stringify(req.body));
+
+    console.log(bookingInformation)
 
     let name: string = bookingInformation.name
+    console.log(name)
     let date: string = bookingInformation.date
-    let terms: termsInfo = {
-        term1: bookingInformation.term1, 
-        term2: bookingInformation.term2, 
-        term3: bookingInformation.term3,
-        term4: bookingInformation.term4,
-        term5: bookingInformation.term5,
-    };
-    await db.collection(date).doc(name).set(terms);
-    res.status(200).json(bookingInformation).send();
+    console.log(date)
 });
 
 // UPDATE
