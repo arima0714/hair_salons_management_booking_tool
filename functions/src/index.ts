@@ -4,16 +4,6 @@ admin.initializeApp();
 
 const db = admin.firestore()
 
-// type bookingInfo = {
-//     date: string;
-//     name: string;
-//     term1: boolean;
-//     term2: boolean;
-//     term3: boolean;
-//     term4: boolean;
-//     term5: boolean;
-// }
-
 // CREATE
 // 予約情報の作成
 export const createDocument = functions.https.onRequest(async (req, res) => {
@@ -36,8 +26,8 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
     }
     let bookingInformation: bookingInfo = JSON.parse(JSON.stringify(req.query));
 
-    // let name: string = bookingInformation.name   
-    // let date: string = bookingInformation.date
+    let name: string = bookingInformation.name
+    let date: string = bookingInformation.date
     let terms: termsInfo = {
         term1: bookingInformation.term1, 
         term2: bookingInformation.term2, 
@@ -45,8 +35,7 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
         term4: bookingInformation.term4,
         term5: bookingInformation.term5,
     };
-
-    await db.collection("test").doc("abc").set(terms);
+    await db.collection(date).doc(name).set(terms);
     res.status(200).json(bookingInformation).send();
 });
 
