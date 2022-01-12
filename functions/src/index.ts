@@ -42,7 +42,9 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
     term5: bookingInformation.term5
   };
 
-  res.status(200).send(terms);
+  await db.collection(date).doc(name).set(terms)
+
+  res.status(200).send();
 });
 
 // UPDATE
