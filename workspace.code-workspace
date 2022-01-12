@@ -9,5 +9,9 @@
 		"plantuml.server": "http://localhost:8080",
 		"plantuml.exportFormat": "png",
 		"plantuml.exportOutDir": "./images/",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"[javascript]": {
+		  "editor.defaultFormatter": "esbenp.prettier-vscode"
+		}
 	}
 }
