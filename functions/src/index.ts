@@ -27,12 +27,8 @@ interface termsData {
 export const createDocument = functions.https.onRequest(async (req, res) => {
   const bookingInformation: bookingData = JSON.parse(JSON.stringify(req.body));
 
-  console.log(bookingInformation);
-
   let name: string = bookingInformation.name;
-  console.log(name);
   let date: string = bookingInformation.date;
-  console.log(date);
 
   let terms: termsData = {
     tarm1: bookingInformation.term1,
@@ -57,12 +53,16 @@ export const updateDocument = functions.https.onRequest(async (req, res) => {
 // DELETE
 // 予約情報の削除
 export const deleteDocument = functions.https.onRequest(async (req, res) => {
-  await db.collection('test').doc('abc').delete();
+  const bookingInformation: bookingData = JSON.parse(JSON.stringify(req.body));
+  let name: string = bookingInformation.name;
+  let date: string = bookingInformation.date;
+
+  await db.collection(date).doc(name).delete();
   res.send();
 });
 
 // READ
-// 予約情報の追加
+// 予約情報の読み込み
 export const getDocument = functions.https.onRequest(async (req, res) => {
   const data = await (await db.collection('test').doc('abc').get()).data();
   res.send(data);
