@@ -14,6 +14,14 @@ interface bookingData {
     term5: boolean
 }
 
+interface termsData {
+    tarm1: boolean,
+    term2: boolean,
+    term3: boolean,
+    term4: boolean,
+    term5: boolean
+}
+
 // CREATE
 // 予約情報の作成
 export const createDocument = functions.https.onRequest(async (req, res) => {
@@ -25,17 +33,10 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
     console.log(name)
     let date: string = bookingInformation.date
     console.log(date)
-    let term1: boolean = bookingInformation.term1
-    console.log(term1)
-    let term2: boolean = bookingInformation.term2
-    console.log(term2)
-    let term3: boolean = bookingInformation.term3
-    console.log(term3)
-    let term4: boolean = bookingInformation.term4
-    console.log(term4)
-    let term5: boolean = bookingInformation.term5
-    console.log(term5)
-    res.status(200).send();
+
+    let terms: termsData = {"tarm1": bookingInformation.term1, "term2": bookingInformation.term2, "term3":bookingInformation.term3, "term4": bookingInformation.term4, "term5":bookingInformation.term5}
+
+    res.status(200).send(terms);
 });
 
 // UPDATE
