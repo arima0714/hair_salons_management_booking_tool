@@ -13,7 +13,6 @@ interface bookingData {
   term3: boolean;
   term4: boolean;
   term5: boolean;
-  description: string;
 }
 
 interface termsData {
