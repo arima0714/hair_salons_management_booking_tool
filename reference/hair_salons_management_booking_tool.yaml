@@ -4,6 +4,70 @@ info:
   version: '1.0'
 servers:
   - url: 'http://localhost:3000'
-paths: {}
+paths:
+  /hairsalonsmanagementbooking/us-central1/createDocument:
+    post:
+      summary: ''
+      operationId: post-hairsalonsmanagementbooking-us-central1-createDocument
+      responses:
+        '200':
+          description: OK
+      description: 'CREATE:予約情報の作成'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                salonName:
+                  type: string
+                  minLength: 1
+                date:
+                  type: string
+                  minLength: 1
+                name:
+                  type: string
+                  minLength: 1
+                term1:
+                  type: boolean
+                term2:
+                  type: boolean
+                term3:
+                  type: boolean
+                term4:
+                  type: boolean
+                term5:
+                  type: boolean
+              required:
+                - salonName
+                - date
+                - name
+                - term1
+                - term2
+                - term3
+                - term4
+                - term5
+              x-examples:
+                example-1:
+                  salonName: salon00
+                  date: 2022年1月10日
+                  name: name00
+                  term1: true
+                  term2: true
+                  term3: true
+                  term4: true
+                  term5: true
+            examples:
+              example-1:
+                value:
+                  salonName: salon00
+                  date: 2022年1月10日
+                  name: name00
+                  term1: true
+                  term2: true
+                  term3: true
+                  term4: true
+                  term5: true
 components:
   schemas: {}
