@@ -52,7 +52,7 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
     termsData['term5'] = name;
   }
 
-  await db.collection(salonName).doc(date).set(termsData)
+  await db.collection(salonName).doc(date).set(termsData);
 
   res.status(200).send();
 });
@@ -76,7 +76,6 @@ export const deleteDocument = functions.https.onRequest(async (req, res) => {
   res.send();
 });
 
-
 interface bookingDataToRead {
   salonName: string;
   date: string;
@@ -85,8 +84,9 @@ interface bookingDataToRead {
 // READ
 // 予約情報の読み込み
 export const getDocument = functions.https.onRequest(async (req, res) => {
-  
-  const bookingInformation: bookingDataToRead = JSON.parse(JSON.stringify(req.body))
+  const bookingInformation: bookingDataToRead = JSON.parse(
+    JSON.stringify(req.body)
+  );
   const salonName = bookingInformation.salonName;
   const date = bookingInformation.date;
 
