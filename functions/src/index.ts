@@ -5,6 +5,7 @@ admin.initializeApp();
 const db = admin.firestore();
 
 interface bookingData {
+  salonName: string;
   date: string;
   name: string;
   term1: boolean;
@@ -24,6 +25,7 @@ interface termsData {
 export const createDocument = functions.https.onRequest(async (req, res) => {
   const bookingInformation: bookingData = JSON.parse(JSON.stringify(req.body));
 
+  let salonName: string = bookingInformation.salonName;
   let name: string = bookingInformation.name;
   let date: string = bookingInformation.date;
 
@@ -51,7 +53,9 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
     termsData['term5'] = name;
   }
 
-  res.status(200).send(date).set(termsData);
+  await db.collection(salonName).doc(date).set(termsData)
+
+  res.status(200).send();
 });
 
 // UPDATE
