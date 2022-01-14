@@ -76,9 +76,20 @@ export const deleteDocument = functions.https.onRequest(async (req, res) => {
   res.send();
 });
 
+
+interface bookingDataToRead {
+  salonName: string;
+  date: string;
+}
+
 // READ
 // 予約情報の読み込み
 export const getDocument = functions.https.onRequest(async (req, res) => {
-  const data = await (await db.collection('test').doc('abc').get()).data();
+  
+  const bookingInformation: bookingDataToRead = JSON.parse(JSON.stringify(req.body))
+  const salonName = bookingInformation.salonName;
+  const date = bookingInformation.date;
+
+  const data = await (await db.collection(salonName).doc(date).get()).data();
   res.send(data);
 });
