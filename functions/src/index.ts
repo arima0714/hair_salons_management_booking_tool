@@ -12,14 +12,11 @@ interface bookingData {
   term3: boolean;
   term4: boolean;
   term5: boolean;
+  description: string;
 }
 
 interface termsData {
-  tarm1: boolean;
-  term2: boolean;
-  term3: boolean;
-  term4: boolean;
-  term5: boolean;
+  [term: string]: string;
 }
 
 // CREATE
@@ -30,17 +27,31 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
   let name: string = bookingInformation.name;
   let date: string = bookingInformation.date;
 
-  let terms: termsData = {
-    tarm1: bookingInformation.term1,
-    term2: bookingInformation.term2,
-    term3: bookingInformation.term3,
-    term4: bookingInformation.term4,
-    term5: bookingInformation.term5
-  };
+  let termsData: termsData = {};
 
-  await db.collection(date).doc(name).set(terms)
+  let term1toBeReceived: boolean = bookingInformation.term1;
+  let term2toBeReceived: boolean = bookingInformation.term2;
+  let term3toBeReceived: boolean = bookingInformation.term3;
+  let term4toBeReceived: boolean = bookingInformation.term4;
+  let term5toBeReceived: boolean = bookingInformation.term5;
 
-  res.status(200).send();
+  if (term1toBeReceived) {
+    termsData['term1'] = name;
+  }
+  if (term2toBeReceived) {
+    termsData['term2'] = name;
+  }
+  if (term3toBeReceived) {
+    termsData['term3'] = name;
+  }
+  if (term4toBeReceived) {
+    termsData['term4'] = name;
+  }
+  if (term5toBeReceived) {
+    termsData['term5'] = name;
+  }
+
+  res.status(200).send(date).set(termsData);
 });
 
 // UPDATE
