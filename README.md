@@ -32,3 +32,11 @@ dockerが必要でサーバーの起動は下記の通り。
 ## 起動
 
 `npx firebase emulators:start`
+
+# 環境構築
+
+```
+npm ci
+cd functions
+npm ci
+```
