@@ -35,8 +35,19 @@ dockerが必要でサーバーの起動は下記の通り。
 
 # 環境構築
 
-```
-npm ci
-cd functions
-npm ci
-```
+## ローカル環境構築
+
+### 実行に必要なライブラリやコマンドのインストール
+
+1. `./` で `npm ci`
+2. `./functions` で `npm ci`
+3. `./` で `npm install -g firebase-tools`
+
+### firebaseの設定
+
+`./` で実行する
+* `firebase login`
+* `firebase init`
+    * > Emulators: Set up local emulators for Firebase products
+    * `Functions`, `firestore`, `Hosting` に該当するものを選択
+    * ポートなどはデフォルトで設定
