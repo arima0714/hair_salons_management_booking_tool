@@ -57,14 +57,6 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
   res.status(200).send();
 });
 
-// TODO:更新処理
-// UPDATE
-// 予約情報の更新
-// export const updateDocument = functions.https.onRequest(async (req, res) => {
-//   await db.collection('test').doc('abc').update({ a: 234, b: 345 });
-//   res.send();
-// });
-
 // DELETE
 // 予約情報の削除
 export const deleteDocument = functions.https.onRequest(async (req, res) => {
