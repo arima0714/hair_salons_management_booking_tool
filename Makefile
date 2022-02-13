@@ -17,4 +17,4 @@ testDelete00inLocal:
 
 testRead01inLocal:
 	make testCurl00inLocal
-	cd testData && curl -H "Content-Type: application/json" -d @read01.json http://127.0.0.1:5001/hairsalonsmanagementbooking/us-central1/getDocumente
+	cd testData && curl -H "Content-Type: application/json" -d @read01.json http://127.0.0.1:5001/hairsalonsmanagementbooking/us-central1/getDocument
