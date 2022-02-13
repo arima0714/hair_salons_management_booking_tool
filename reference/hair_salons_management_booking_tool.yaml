@@ -69,6 +69,40 @@ paths:
                   term3: true
                   term4: true
                   term5: true
+  /hairsalonsmanagementbooking/us-central1/readDocument:
+    parameters: []
+    get:
+      summary: ''
+      operationId: get-hairsalonsmanagementbooking-us-central1-readDocument
+      responses:
+        '200':
+          description: OK
+      description: 'READ:予約情報の削除'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                salonName:
+                  type: string
+                  minLength: 1
+                date:
+                  type: string
+                  minLength: 1
+              required:
+                - salonName
+                - date
+              x-examples:
+                example-1:
+                  salonName: salon00
+                  date: 2022年1月10日
+            examples:
+              example-1:
+                value:
+                  salonName: salon00
+                  date: 2022年1月10日
   /hairsalonsmanagementbooking/us-central1/deleteDocument:
     parameters: []
     delete:
