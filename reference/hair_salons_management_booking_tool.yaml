@@ -77,7 +77,7 @@ paths:
       responses:
         '200':
           description: OK
-      description: 'READ:予約情報の削除'
+      description: 'READ:予約情報の読み込み'
       requestBody:
         content:
           application/json:
