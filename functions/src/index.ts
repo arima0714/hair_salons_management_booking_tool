@@ -61,10 +61,12 @@ export const createDocument = functions.https.onRequest(async (req, res) => {
 // 予約情報の削除
 export const deleteDocument = functions.https.onRequest(async (req, res) => {
   const bookingInformation: bookingData = JSON.parse(JSON.stringify(req.body));
-  let name: string = bookingInformation.name;
+
+  let salonName: string = bookingInformation.salonName;
+  // let name: string = bookingInformation.name;
   let date: string = bookingInformation.date;
 
-  await db.collection(date).doc(name).delete();
+  await db.collection(salonName).doc(date).delete();
   res.send();
 });
 
