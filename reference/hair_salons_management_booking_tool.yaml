@@ -77,6 +77,48 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  term2:
+                    type: string
+                    minLength: 1
+                  term3:
+                    type: string
+                    minLength: 1
+                  term1:
+                    type: string
+                    minLength: 1
+                  term4:
+                    type: string
+                    minLength: 1
+                  term5:
+                    type: string
+                    minLength: 1
+                required:
+                  - term2
+                  - term3
+                  - term1
+                  - term4
+                  - term5
+                x-examples:
+                  example-1:
+                    term2: name00
+                    term3: name00
+                    term1: name00
+                    term4: name00
+                    term5: name00
+              examples:
+                example-1:
+                  value:
+                    term2: name00
+                    term3: name00
+                    term1: name00
+                    term4: name00
+                    term5: name00
       description: 'READ:予約情報の読み込み'
       requestBody:
         content:
